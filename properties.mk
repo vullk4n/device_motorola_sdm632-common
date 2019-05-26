@@ -88,7 +88,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.disable_scaler=0 \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
-    ro.vendor.display.cabl=0
+    ro.vendor.display.cabl=0 \
+    ro.hardware.egl=adreno \
+    ro.hardware.vulkan=msm8953
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
