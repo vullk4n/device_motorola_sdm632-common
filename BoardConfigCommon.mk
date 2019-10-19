@@ -220,6 +220,12 @@ CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/apns-conf.xml
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
+# Reserve space for gapps install
+ifneq ($(WITH_GMS),true)
+BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := -1
+BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 681574400
+endif
+
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := persist
 
