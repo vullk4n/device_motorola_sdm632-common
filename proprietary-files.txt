@@ -133,6 +133,25 @@ vendor/lib64/vendor.qti.latency@2.0.so
 vendor/bin/cnd|ca653a8064fe83a12a12798a73c9cc8c1fecf758
 vendor/lib64/libcne.so|1344c4749026a55eee9e3a814c7a71b6733e08fb
 
+# Dolby
+-app/MotoDolbyV3/MotoDolbyV3.apk
+etc/permissions/com.dolby.daxservice.xml
+etc/permissions/com.motorola.dolby.dolbyui.features.xml
+-priv-app/daxService/daxService.apk
+vendor/bin/hw/vendor.dolby.hardware.dms@1.0-service
+vendor/etc/init/vendor.dolby.hardware.dms@1.0-service.rc
+vendor/etc/dolby/dax-default-na.xml
+vendor/etc/dolby/dax-default.xml
+vendor/lib/libdapparamstorage.so
+vendor/lib/libstagefrightdolby.so
+vendor/lib/soundfx/libswdap.so
+vendor/lib/vendor.dolby.hardware.dms@1.0.so
+vendor/lib64/libdapparamstorage.so
+vendor/lib64/libdlbdsservice.so
+vendor/lib64/soundfx/libswdap.so
+vendor/lib64/vendor.dolby.hardware.dms@1.0-impl.so
+vendor/lib64/vendor.dolby.hardware.dms@1.0.so
+
 # DRM - HDCP
 vendor/lib/libmm-hdcpmgr.so
 vendor/lib64/libmm-hdcpmgr.so
