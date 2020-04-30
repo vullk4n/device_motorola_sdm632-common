@@ -342,6 +342,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_ODM_PROPERTIES += \
     ro.vendor.qti.va_odm.support=1
 
+TARGET_COMMON_QTI_COMPONENTS := \
+    perf
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
