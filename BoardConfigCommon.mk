@@ -222,7 +222,7 @@ TARGET_USES_INTERACTION_BOOST := true
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 ENABLE_VENDOR_RIL_SERVICE := true
-CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/sprint_apns.xml
+CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/apns-conf.xml
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
