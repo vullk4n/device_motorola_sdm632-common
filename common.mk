@@ -119,6 +119,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    vendor.qti.hardware.camera.device@1.0:64 \
     android.frameworks.displayservice@1.0.vendor \
     android.hardware.camera.device@3.5 \
     android.hardware.camera.provider@2.4-impl:32 \
