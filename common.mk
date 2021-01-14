@@ -129,6 +129,9 @@ PRODUCT_PACKAGES += \
     libxml2 \
     Snap
 
+PRODUCT_PACKAGES += \
+    GCam
+
 # Codec2 modules
 PRODUCT_PACKAGES += \
     com.android.media.swcodec \
