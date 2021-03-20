@@ -56,7 +56,10 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
+    odm \
+    product \
     system \
+    system_ext \
     vendor
 
 # Audio
@@ -132,6 +135,12 @@ TARGET_USES_GRALLOC1 := true
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
+# Dynamic partitions
+BOARD_SUPER_PARTITION_GROUPS := moto_dynamic_partitions
+BOARD_MOTO_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor
+BOARD_SUPER_PARTITION_METADATA_DEVICE := system
+BOARD_SUPER_PARTITION_BLOCK_DEVICES := oem system vendor
+
 # FM
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
@@ -157,6 +166,7 @@ BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sle
 BOARD_KERNEL_CMDLINE += androidboot.bootdevice=7824900.sdhci androidboot.usbconfigfs=true
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.veritymode=eio
+BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/7824900.sdhci
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE :=  2048
@@ -176,6 +186,9 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Metadata
+BOARD_USES_METADATA_PARTITION := true
+
 # NFC / ODM
 ODM_MANIFEST_SKUS := nfc
 ODM_MANIFEST_NFC_FILES := $(PLATFORM_PATH)/odm_manifest_nfc.xml
@@ -183,12 +196,17 @@ ODM_MANIFEST_NFC_FILES := $(PLATFORM_PATH)/odm_manifest_nfc.xml
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072                  # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_NO_RECOVERY := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_COPY_OUT_ODM := odm
+TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Power
