@@ -3,3 +3,7 @@ import /init.recovery.qcom.usb.rc
 on fs
     wait /dev/block/platform/soc/7824900.sdhci
     symlink /dev/block/platform/soc/7824900.sdhci /dev/block/bootdevice
+    symlink /dev/block/bootdevice/by-name/oem_b /dev/block/bootdevice/by-name/odm_b
+    symlink /dev/block/bootdevice/by-name/oem_a /dev/block/bootdevice/by-name/odm_a
+    symlink /dev/block/by-name/oem_b /dev/block/by-name/odm_b
+    symlink /dev/block/by-name/oem_a /dev/block/by-name/odm_a

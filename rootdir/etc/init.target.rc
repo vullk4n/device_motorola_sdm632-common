@@ -62,6 +62,10 @@ on property:ro.vendor.hw.dualsim=false
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    symlink /dev/block/bootdevice/by-name/oem_b /dev/block/bootdevice/by-name/odm_b
+    symlink /dev/block/bootdevice/by-name/oem_a /dev/block/bootdevice/by-name/odm_a
+    symlink /dev/block/by-name/oem_b /dev/block/by-name/odm_b
+    symlink /dev/block/by-name/oem_a /dev/block/by-name/odm_a
 
     mount_all /vendor/etc/fstab.qcom
     write /proc/sys/vm/swappiness 100
