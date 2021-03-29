@@ -261,8 +261,8 @@ PRODUCT_PACKAGES += \
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm \
-    vendor.lineage.livedisplay@2.0-service-sysfs
+    vendor.lineage.livedisplay@2.0-service-sdm.motorola_sdm632 \
+    vendor.lineage.livedisplay@2.0-service-sysfs.motorola_sdm632
 
 # Media
 PRODUCT_COPY_FILES += \
