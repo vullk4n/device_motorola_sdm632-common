@@ -109,6 +109,7 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default \
     android.hardware.bluetooth.audio@2.0-impl:32 \
     libbt-vendor \
+    libbtconfigstore \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
 # Boot control HAL
