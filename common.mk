@@ -257,6 +257,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.msm8953
 
+# LineageActions
+PRODUCT_PACKAGES += \
+    LineageActions
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
@@ -270,10 +274,6 @@ PRODUCT_COPY_FILES += \
 # Media / StagefrightCodec 2.0
 PRODUCT_PACKAGES += \
     libstagefright_ccodec
-
-# MotoActions
-PRODUCT_PACKAGES += \
-    MotoActions
 
 # Network
 PRODUCT_PACKAGES += \
