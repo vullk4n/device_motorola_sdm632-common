@@ -2,6 +2,13 @@
 # props for sdm632
 #
 
+# ADB
+persist.sys.usb.config=diag,adb
+sys.usb.config=diag,adb
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1
+
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
