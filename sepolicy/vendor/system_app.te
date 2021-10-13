@@ -10,7 +10,3 @@ dontaudit system_app {
   apex_service
   system_suspend_control_service
 }:service_manager find;
-
-allow system_app sysfs_battery_supply:dir search;
-allow system_app sysfs_battery_supply:file rw_file_perms;
-
