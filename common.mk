@@ -398,6 +398,10 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 QCOM_SOONG_NAMESPACE := $(LOCAL_PATH)/qcom-caf
 
+# System
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.binary_xml=false
+
 # Telephony
 PRODUCT_PACKAGES += \
     qti-telephony-hidl-wrapper \
