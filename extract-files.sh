@@ -86,6 +86,16 @@ function blob_fixup() {
                 "${PATCHELF}" --add-needed "libqsap_shim.so" "$LIBQSAP_SHIM"
             done
             ;;
+        product/lib64/lib-imscamera.so | product/lib64/lib-imsvideocodec.so)
+            for LIBGUI_SHIM in $(grep -L "libgui_shim.so" "${2}"); do
+                "${PATCHELF}" --add-needed "libgui_shim.so" "${LIBGUI_SHIM}"
+            done
+            ;;
+        vendor/lib/libmot_gpu_mapper.so)
+            for LIBGUI_SHIM in $(grep -L "libgui_shim_vendor.so" "${2}"); do
+                "${PATCHELF}" --add-needed "libgui_shim_vendor.so" "${LIBGUI_SHIM}"
+            done
+            ;;
     esac
 }
 
