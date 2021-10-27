@@ -64,6 +64,9 @@ PRODUCT_PACKAGES += \
     bootctrl.msm8953 \
     bootctrl.msm8953.recovery
 
+# APEX
+OVERRIDE_PRODUCT_COMPRESSED_APEX := false
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl:32 \
