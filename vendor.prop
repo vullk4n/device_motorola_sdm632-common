@@ -79,6 +79,7 @@ pm.dexopt.shared=quicken
 
 # Display
 ro.config.avoid_gfx_accel=true
+debug.sf.enable_gl_backpressure=1
 ro.sf.hwc_set_default_colormode=true
 debug.renderengine.backend=skiaglthreaded
 debug.sf.hw=1
