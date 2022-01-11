@@ -19,6 +19,15 @@ cc_library {
 }
 
 cc_library {
+    name: "libcutils_shim",
+    vendor: true,
+    shared_libs: [
+        "libcutils",
+    ],
+    srcs: ["strdup16to8.cpp"],
+}
+
+cc_library {
     name: "libmemset_shim",
     vendor: true,
     target: {
