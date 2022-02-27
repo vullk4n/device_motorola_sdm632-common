@@ -181,7 +181,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.ims.vt.enableadb=1 \
     persist.vendor.ims.disableQXDMLogs=1 \
     persist.vendor.qti.telephony.vt_cam_interface=2 \
-    ro.vendor.build.vendorprefix=/vendor
+    ro.vendor.build.vendorprefix=/vendor \
+    ro.telephony.bypass.signalstrenthreporting=true
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.radio.aosp_usr_pref_sel=true \
