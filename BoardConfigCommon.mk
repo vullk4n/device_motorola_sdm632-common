@@ -215,6 +215,15 @@ include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/private
 
+# SHIMS
+TARGET_LD_SHIM_LIBS := \
+	/vendor/lib64/libmdmcutback.so | libqsap_shim.so \
+	/vendor/lib64/libril-qc-hal-qmi.so | libcutils_shim.so \
+	/vendor/bin/charge_only_mode | libmemset_shim.so \
+	/system/product/lib64/lib-imsvideocodec.so | libgui_shim.so \
+	/system/product/lib64/lib-imscamera.so | libgui_shim.so \
+	/vendor/lib/libmot_gpu_mapper.so | libgui_shim_vendor.so
+
 # Treble
 BOARD_VNDK_VERSION := current
 
