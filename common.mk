@@ -384,6 +384,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     android.system.net.netd@1.1.vendor \
+    android.hardware.secure_element@1.0.vendor \
     librmnetctl \
     libprotobuf-cpp-full
 
@@ -407,7 +408,9 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl:64 \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0.vendor \
+    android.frameworks.sensorservice@1.0.vendor
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -484,8 +487,6 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor \
     libgui_vendor:32 \
     vndk_package
-
-PRODUCT_EXTRA_VNDK_VERSIONS := 30
 
 # Wifi
 PRODUCT_COPY_FILES += \
