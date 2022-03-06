@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015 The CyanogenMod Project
- * Copyright (c) 2017 The LineageOS Project
+ * Copyright (c) 2017-2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,18 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
-
-import java.util.List;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+package org.lineageos.settings.device;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.hardware.TriggerEventListener;
 import android.util.Log;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.List;
 
 public class SensorHelper {
     private static final String TAG = "MotoActions";
@@ -37,8 +36,6 @@ public class SensorHelper {
     private static final int SENSOR_TYPE_MMI_FLAT_UP = 65537;
     private static final int SENSOR_TYPE_MMI_FLAT_DOWN = 65538;
     private static final int SENSOR_TYPE_MMI_STOW = 65539;
-    private static final int SENSOR_TYPE_MMI_GLANCE = 65548;
-    private static final int SENSOR_TYPE_MMI_GLANCE_APPROACH = 65555;
 
     private static final int BATCH_LATENCY_IN_MS = 100;
 
@@ -47,7 +44,7 @@ public class SensorHelper {
 
     public SensorHelper(Context context) {
         mContext = context;
-        mSensorManager = (SensorManager) mContext .getSystemService(Context.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         dumpSensorsList();
     }
 
@@ -59,7 +56,8 @@ public class SensorHelper {
             List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_ALL);
             for (Sensor sensor : sensorList) {
                 writer.write("sensor " + sensor.getType() + " = " + sensor.getName()
-                    + " max batch: " + sensor.getFifoMaxEventCount() + " isWakeUp: " + sensor.isWakeUpSensor() + "\n");
+                        + " max batch: " + sensor.getFifoMaxEventCount() + " isWakeUp: "
+                        + sensor.isWakeUpSensor() + "\n");
             }
             writer.close();
         } catch (IOException e) {
@@ -83,14 +81,6 @@ public class SensorHelper {
         return mSensorManager.getDefaultSensor(SENSOR_TYPE_MMI_FLAT_DOWN, true);
     }
 
-    public Sensor getGlanceSensor() {
-        return mSensorManager.getDefaultSensor(SENSOR_TYPE_MMI_GLANCE, true);
-    }
-    
-    public Sensor getApproachGlanceSensor() {
-        return mSensorManager.getDefaultSensor(SENSOR_TYPE_MMI_GLANCE_APPROACH, true);
-    }
-
     public Sensor getProximitySensor() {
         return mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY, true);
     }
@@ -101,23 +91,12 @@ public class SensorHelper {
 
     public void registerListener(Sensor sensor, SensorEventListener listener) {
         if (!mSensorManager.registerListener(listener, sensor,
-            SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000)) {
-            throw new RuntimeException("Failed to registerListener for sensor " + sensor);
+                SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000)) {
+            Log.e(TAG, "Failed to registerListener for sensor " + sensor);
         }
     }
 
     public void unregisterListener(SensorEventListener listener) {
         mSensorManager.unregisterListener(listener);
-    }
-
-    /* TriggerSensor */
-    public void requestTriggerSensor(Sensor sensor, TriggerEventListener listener) {
-        if (!mSensorManager.requestTriggerSensor(listener, sensor)) {
-            throw new RuntimeException("Failed to requestTriggerSensor for sensor " + sensor);
-        }
-    }
-
-    public void cancelTriggerSensor(Sensor sensor, TriggerEventListener listener) {
-        mSensorManager.cancelTriggerSensor(listener, sensor);
     }
 }

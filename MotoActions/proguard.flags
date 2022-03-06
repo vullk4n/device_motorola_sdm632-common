@@ -1,4 +1,4 @@
--keep class com.moto.actions.* {
+-keep class org.lineageos.MotoActions.* {
   *;
 }
 

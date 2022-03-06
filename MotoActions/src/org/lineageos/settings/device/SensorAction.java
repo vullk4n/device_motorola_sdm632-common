@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015 The CyanogenMod Project
- * Copyright (c) 2017 The LineageOS Project
+ * Copyright (c) 2017-2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-package com.moto.actions.actions;
+package org.lineageos.settings.device;
 
-public interface UpdatedStateNotifier {
-    public void updateState();
+public interface SensorAction {
+    void action();
 }

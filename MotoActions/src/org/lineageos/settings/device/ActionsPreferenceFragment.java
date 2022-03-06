@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2015-2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017-2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,29 @@
  * limitations under the License.
  */
 
-package com.moto.actions;
+package org.lineageos.settings.device;
 
-import android.app.ActionBar;
 import android.os.Bundle;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
-import android.text.TextUtils;
 import android.view.MenuItem;
 
-import java.io.File;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragment;
+
+import org.lineageos.settings.device.actions.CameraActivationSensor;
 
 public class ActionsPreferenceFragment extends PreferenceFragment {
+
+    private static final String KEY_ACTIONS_CATEGORY = "actions_key";
+    private static final String KEY_GESTURE_CAMERA_ACTION = "gesture_camera_action";
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.actions_panel);
-        final ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        if (!CameraActivationSensor.hasSensor(getContext())) {
+            PreferenceCategory category = findPreference(KEY_ACTIONS_CATEGORY);
+            category.removePreferenceRecursively(KEY_GESTURE_CAMERA_ACTION);
+        }
     }
 
     @Override
