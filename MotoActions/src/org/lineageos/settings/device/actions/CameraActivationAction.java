@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015 The CyanogenMod Project
- * Copyright (c) 2017 The LineageOS Project
+ * Copyright (c) 2017-2022 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,7 @@
  * limitations under the License.
  */
 
-package com.moto.actions.actions;
-
-import java.util.List;
+package org.lineageos.settings.device.actions;
 
 import android.app.KeyguardManager;
 import android.content.ComponentName;
@@ -27,15 +25,17 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
+import android.os.UserHandle;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.provider.MediaStore;
-import android.util.Log;
 
-import com.moto.actions.SensorAction;
+import org.lineageos.settings.device.SensorAction;
+
+import java.util.List;
 
 public class CameraActivationAction implements SensorAction {
-    private static final String TAG = "MotoActions";
+    private static final String TAG = "CameraActivationAction";
 
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
@@ -43,12 +43,16 @@ public class CameraActivationAction implements SensorAction {
     private final KeyguardManager mKeyguardManager;
     private final PackageManager mPackageManager;
     private final PowerManager mPowerManager;
+    private final PowerManager.WakeLock mScreenWakelock;
 
     public CameraActivationAction(Context context) {
         mContext = context;
         mKeyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mPackageManager = context.getPackageManager();
+        mScreenWakelock = mPowerManager.newWakeLock(
+                PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                TAG + ":Wakelock");
     }
 
     @Override
@@ -64,20 +68,18 @@ public class CameraActivationAction implements SensorAction {
 
     private void vibrate() {
         Vibrator v = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(500);
+        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 
     private void turnScreenOn() {
-        PowerManager.WakeLock wl = mPowerManager.newWakeLock(
-            PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, TAG);
-        wl.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
+        mScreenWakelock.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
     }
 
     private void launchCamera() {
         Intent intent = createIntent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
         if (getBestActivityInfo(intent) != null) {
             // Only launch if we can succeed, but let the user pick the action
-            mContext.startActivity(intent);
+            mContext.startActivityAsUser(intent, UserHandle.CURRENT);
         }
     }
 
@@ -90,7 +92,7 @@ public class CameraActivationAction implements SensorAction {
         ActivityInfo secureActivity = getBestActivityInfo(secureIntent, normalActivity);
         if (secureActivity != null) {
             secureIntent.setComponent(componentName(secureActivity));
-            mContext.startActivity(secureIntent);
+            mContext.startActivityAsUser(secureIntent, UserHandle.CURRENT);
         }
     }
 
@@ -112,13 +114,13 @@ public class CameraActivationAction implements SensorAction {
     }
 
     private ActivityInfo getBestActivityInfo(Intent intent, ActivityInfo match) {
-        List <ResolveInfo> activities = mPackageManager.queryIntentActivities(intent, 0);
+        List<ResolveInfo> activities = mPackageManager.queryIntentActivities(intent, 0);
         ActivityInfo best = null;
         if (activities.size() > 0) {
             best = activities.get(0).activityInfo;
             if (match != null) {
                 String packageName = match.applicationInfo.packageName;
-                for (int i = activities.size()-1; i >= 0; i--) {
+                for (int i = activities.size() - 1; i >= 0; i--) {
                     ActivityInfo activityInfo = activities.get(i).activityInfo;
                     if (packageName.equals(activityInfo.applicationInfo.packageName)) {
                         best = activityInfo;
