@@ -133,7 +133,7 @@ PRODUCT_PACKAGES += \
     Camera2
 
 PRODUCT_PACKAGES += \
-    GCam
+    CamX
 
 # Codec2 modules
 PRODUCT_PACKAGES += \
