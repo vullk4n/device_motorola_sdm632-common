@@ -464,7 +464,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstdc++.vendor \
     libgui_vendor:32 \
-    vndk_package
+    vndk_package \
+    libutils-v32
 
 # Wifi
 PRODUCT_COPY_FILES += \

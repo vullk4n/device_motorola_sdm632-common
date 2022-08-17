@@ -95,6 +95,9 @@ function blob_fixup() {
             for LIBGUI_SHIM in $(grep -L "libgui_shim_vendor.so" "${2}"); do
                 "${PATCHELF}" --add-needed "libgui_shim_vendor.so" "${LIBGUI_SHIM}"
             done
+        # libutils Shim
+        vendor/lib/soundfx/libspeakerbundle.so | vendor/lib*/sensors.*.so)
+            "${PATCHELF}" --replace-needed libutils.so libutils-v32.so "${2}"
             ;;
     esac
 }
