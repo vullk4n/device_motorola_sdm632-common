@@ -234,6 +234,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
 
+# USB
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.usb.rmnet.func.name=rmnet_bam
+    vendor.usb.rmnet.inst.name=rmnet
+    vendor.usb.rndis.func.name=rndis_bam
+
 # Voice assistant
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
