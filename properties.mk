@@ -73,10 +73,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.disable_skip_validate=1 \
     vendor.display.enable_default_color_mode=1
 
-# Crypto
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.crypto.volume.filenames_mode=aes-256-cts
-
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
