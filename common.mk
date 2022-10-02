@@ -24,9 +24,6 @@
 
 $(call inherit-product, vendor/motorola/sdm632-common/sdm632-common-vendor.mk)
 
-# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -121,11 +118,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5 \
     camera.device@3.2-impl:32 \
     libbson.vendor \
-    libxml2 \
-    Camera2
-
-PRODUCT_PACKAGES += \
-    CamX
+    libxml2
 
 # Codec2 modules
 PRODUCT_PACKAGES += \
