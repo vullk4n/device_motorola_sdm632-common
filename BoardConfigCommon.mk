@@ -46,10 +46,7 @@ TARGET_BOOTLOADER_BOARD_NAME := SDM632
 TARGET_BOARD_PLATFORM := msm8953
 
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
-BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 
 # A/B updater
 AB_OTA_UPDATER := true
@@ -124,7 +121,6 @@ USE_CAMERA_STUB := true
 USE_DEVICE_SPECIFIC_DISPLAY := true
 DEVICE_SPECIFIC_DISPLAY_PATH := $(PLATFORM_PATH)/qcom-caf/display
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-TARGET_HAS_WIDE_COLOR_DISPLAY := true
 TARGET_USES_ION := true
 TARGET_USES_HWC2 := true
 TARGET_USES_GRALLOC1 := true
@@ -221,15 +217,6 @@ include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/private
 
-# SHIMS
-TARGET_LD_SHIM_LIBS := \
-	/vendor/lib64/libmdmcutback.so | libqsap_shim.so \
-	/vendor/lib64/libril-qc-hal-qmi.so | libcutils_shim.so \
-	/vendor/bin/charge_only_mode | libmemset_shim.so \
-	/system/product/lib64/lib-imsvideocodec.so | libgui_shim.so \
-	/system/product/lib64/lib-imscamera.so | libgui_shim.so \
-	/vendor/lib/libmot_gpu_mapper.so | libgui_shim_vendor.so
-
 # Treble
 BOARD_VNDK_VERSION := current
 
@@ -238,7 +225,6 @@ BOARD_AVB_ENABLE := false
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
 # Wifi
-BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -250,4 +236,3 @@ WIFI_DRIVER_FW_PATH_AP  := "ap"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
-TARGET_HAS_BROKEN_WLAN_SET_INTERFACE := true
