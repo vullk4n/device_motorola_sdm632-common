@@ -32,7 +32,6 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.msm8953    u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/motorola\.hardware\.audio@2\.0-service            u:object_r:hal_audio_default_exec:s0
 /(vendor|system/vendor)/bin/hw/motorola\.hardware\.audio\.adspd@1\.0-service    u:object_r:hal_audio_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.dolby\.hardware\.dms@1\.0-service                     u:object_r:hal_dms_default_exec:s0
 /(vendor|system/vendor)/bin/init\.mmi\.(laser|usb)\.sh                          u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.power\.sh                               u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/perfd                                               u:object_r:perfd_exec:s0
