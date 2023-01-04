@@ -11,10 +11,6 @@ vendor/lib64/libadsprpc.so
 vendor/lib64/libfastcvadsp_stub.so
 vendor/lib64/libfastcvopt.so
 
-# AptX
-lib64/libaptX_encoder.so
-lib64/libaptXHD_encoder.so
-
 # Audio
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
@@ -137,17 +133,14 @@ vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine
 vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc
 vendor/lib/mediadrm/libwvdrmengine.so
-#vendor/lib/liboemcrypto.so
 vendor/lib64/libwvhidl.so
 vendor/lib64/mediadrm/libwvdrmengine.so
-#vendor/lib64/liboemcrypto.so
 vendor/lib64/libhdcpsrm.so
 vendor/lib64/libcpion.so
 
 # DRM
 vendor/bin/qseecomd
 vendor/lib/libcppf.so
-vendor/lib/liboemcrypto.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
@@ -758,13 +751,10 @@ vendor/lib/libsensor_reg.so
 vendor/lib/libsensor1.so
 vendor/lib/sensor_calibrate.so
 vendor/lib/sensors.rp.so
-vendor/lib/sensors.ssc.so
-vendor/lib64/hw/activity_recognition.msm8953.so
 vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensor1.so
 vendor/lib64/sensor_calibrate.so
 vendor/lib64/sensors.rp.so
-vendor/lib64/sensors.ssc.so
 
 # Thermal
 vendor/bin/thermal-engine
