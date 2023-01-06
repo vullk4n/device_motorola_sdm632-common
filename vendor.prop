@@ -78,6 +78,7 @@ vendor.display.enable_default_color_mode=1
 pm.dexopt.shared=quicken
 
 # Display
+ro.config.avoid_gfx_accel=true
 ro.sf.hwc_set_default_colormode=true
 debug.renderengine.backend=skiaglthreaded
 debug.sf.hw=1
