@@ -85,6 +85,7 @@ ro.opengles.version=196610
 ro.hardware.egl=adreno
 ro.hardware.vulkan=msm8953
 vendor.display.disable_scaler=1
+debug.sf.enable_transaction_tracing=false
 
 # Factory reset partition
 ro.frp.pst=/dev/block/platform/soc/7824900.sdhci/by-name/frp
