@@ -421,8 +421,8 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 PRODUCT_DEXPREOPT_SPEED_APPS += \
-    Settings \
-    SystemUI
+    SettingsGoogle \
+    SystemUIGoogle
 
 # Telephony
 PRODUCT_PACKAGES += \
