@@ -441,4 +441,8 @@
 
     <!-- Default value for performant auth feature. -->
     <bool name="config_performantAuthDefault">true</bool>
+
+    <!-- Whether the combined qs shows in status bar when true, the combined qs will not be available
+         if set it to false  -->
+    <bool name="flag_combined_qs_headers">false</bool>
 </resources>
