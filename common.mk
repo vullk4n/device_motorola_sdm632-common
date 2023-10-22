@@ -121,7 +121,10 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5 \
     camera.device@3.2-impl:32 \
     libbson.vendor \
-    libxml2
+    libxml2 \
+    android.frameworks.sensorservice@1.0 \
+    android.frameworks.sensorservice@1.0.vendor \
+    vendor.qti.hardware.camera.device@1.0:64
 
 # Codec2 modules
 PRODUCT_PACKAGES += \
