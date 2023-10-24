@@ -468,6 +468,10 @@ vendor/lib64/libperipheral_client.so
 # Postprocessing
 vendor/lib64/libdisp-aba.so
 
+# Protobuf
+vendor/lib64/libprotobuf-cpp-full-v29.so
+vendor/lib64/libprotobuf-cpp-lite-v29.so
+
 # QMI
 vendor/bin/irsc_util
 vendor/lib/libdiag.so

@@ -103,6 +103,13 @@ function blob_fixup() {
         vendor/bin/pm-service)
             grep -q libutils-v33.so "${2}" || "${PATCHELF}" --add-needed "libutils-v33.so" "${2}"
             ;;
+        # Use VNDK 29 protobuf
+        vendor/lib64/libsettings.so | vendor/lib64/libril-qc-hal-qmi.so)
+            "${PATCHELF}" --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v29.so"
+            ;;
+        vendor/lib64/libwvhidl.so)
+            "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so"
+            ;;
     esac
 }
 
