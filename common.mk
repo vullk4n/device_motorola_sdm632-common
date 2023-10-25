@@ -340,7 +340,8 @@ PRODUCT_PACKAGES += \
 # Radio
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libprotobuf-cpp-full
+    libprotobuf-cpp-full \
+    android.hardware.secure_element@1.0.vendor:64
 
 # RIL
 PRODUCT_PACKAGES += \
