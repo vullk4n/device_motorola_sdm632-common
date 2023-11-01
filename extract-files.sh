@@ -99,6 +99,10 @@ function blob_fixup() {
         vendor/lib/soundfx/libspeakerbundle.so | vendor/lib*/sensors.*.so)
             "${PATCHELF}" --replace-needed libutils.so libutils-v32.so "${2}"
             ;;
+        # Fix missing symbols
+        vendor/bin/pm-service)
+            grep -q libutils-v33.so "${2}" || "${PATCHELF}" --add-needed "libutils-v33.so" "${2}"
+            ;;
     esac
 }
 
