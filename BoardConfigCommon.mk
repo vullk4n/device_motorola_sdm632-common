@@ -206,7 +206,6 @@ TARGET_VENDOR_PROP += $(PLATFORM_PATH)/vendor.prop
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
-CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/apns-conf.xml
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
